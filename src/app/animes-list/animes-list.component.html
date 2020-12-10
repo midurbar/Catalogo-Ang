@@ -2,14 +2,14 @@
     <table class="table">
         <thead>
             <tr>
-                <th class="col">ID</th>
-                <th class="col">Nombre</th>
-                <th class="col">Episodios</th>
-                <th class="col">Tipo</th>
-                <th class="col">Descripcion</th>
-                <th class="col">Fecha Creacion</th>
-                <th class="col">Fecha Actualizacion</th>
-                <th class="col">ID Biblioteca</th>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Episodios</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Fecha Creacion</th>
+                <th scope="col">Fecha Actualizacion</th>
+                <th scope="col">ID Biblioteca</th>
             </tr>
         </thead>
         <tbody>
@@ -18,8 +18,8 @@
                 <td>{{anime.Nombre}}</td>
                 <td>{{anime.Ep}}</td>
                 <td>{{anime.Tipo}}</td>
-                <td>{{anime.createdAt}}</td>
-                <td>{{anime.updatedAt}}</td>
+                <td>{{anime.createdAt|date:'dd-MM-yyyy'}}</td>
+                <td>{{anime.updatedAt|date:'dd-MM-yyyy'}}</td>
                 <td>{{anime.Id_Bib}}</td>
             </tr>
         </tbody>
