@@ -1,1 +1,27 @@
-<p>animes-list works!</p>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="col">ID</th>
+                <th class="col">Nombre</th>
+                <th class="col">Episodios</th>
+                <th class="col">Tipo</th>
+                <th class="col">Descripcion</th>
+                <th class="col">Fecha Creacion</th>
+                <th class="col">Fecha Actualizacion</th>
+                <th class="col">ID Biblioteca</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let anime of animes">
+                <td>{{anime.Id}}</td>
+                <td>{{anime.Nombre}}</td>
+                <td>{{anime.Ep}}</td>
+                <td>{{anime.Tipo}}</td>
+                <td>{{anime.createdAt}}</td>
+                <td>{{anime.updatedAt}}</td>
+                <td>{{anime.Id_Bib}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -8,6 +8,7 @@ import { BibliotecasListComponent } from './bibliotecas-list/bibliotecas-list.co
 import { MangasListComponent } from './mangas-list/mangas-list.component';
 import { NovelasListComponent } from './novelas-list/novelas-list.component';
 import { UsuariosListComponent } from './usuarios-list/usuarios-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { UsuariosListComponent } from './usuarios-list/usuarios-list.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
