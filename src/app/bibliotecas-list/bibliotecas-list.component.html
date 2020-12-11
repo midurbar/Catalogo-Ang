@@ -1,1 +1,20 @@
-<p>bibliotecas-list works!</p>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">ID de Usuario</th>
+                <th scope="col">Fecha Creacion</th>
+                <th scope="col">Fecha Actualizacion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let biblioteca of bibliotecas">
+                <td>{{bibliotecas.Id}}</td>
+                <td>{{bibliotecas.Id_us}}</td>
+                <td>{{bibliotecas.createdAt|date:'dd-MM-yyyy'}}</td>
+                <td>{{bibliotecas.updatedAt|date:'dd-MM-yyyy'}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

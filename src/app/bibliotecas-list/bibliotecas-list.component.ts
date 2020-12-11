@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-bibliotecas-list',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BibliotecasListComponent implements OnInit {
 
-  constructor() { }
+  bibliotecas= [];
+
+  constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
+    this.http.get<any[]>("http://localhost:3000/api/bibliotecas")
+    .subscribe(bibliotecas => {
+      this.bibliotecas = bibliotecas;
+    })
   }
 
 }

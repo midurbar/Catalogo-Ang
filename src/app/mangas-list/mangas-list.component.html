@@ -1,1 +1,27 @@
-<p>mangas-list works!</p>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Volumenes</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Fecha Creacion</th>
+                <th scope="col">Fecha Actualizacion</th>
+                <th scope="col">ID Biblioteca</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let manga of mangas">
+                <td>{{manga.Id}}</td>
+                <td>{{manga.Nombre}}</td>
+                <td>{{manga.Vol}}</td>
+                <td>{{manga.Tipo}}</td>
+                <td>{{manga.createdAt|date:'dd-MM-yyyy'}}</td>
+                <td>{{manga.updatedAt|date:'dd-MM-yyyy'}}</td>
+                <td>{{manga.Id_Bib}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
