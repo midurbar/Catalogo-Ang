@@ -9,6 +9,8 @@ import { MangasListComponent } from './mangas-list/mangas-list.component';
 import { NovelasListComponent } from './novelas-list/novelas-list.component';
 import { UsuariosListComponent } from './usuarios-list/usuarios-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AnimeDetailComponent } from './anime-detail/anime-detail.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,12 +19,15 @@ import { HttpClientModule } from '@angular/common/http';
     BibliotecasListComponent,
     MangasListComponent,
     NovelasListComponent,
-    UsuariosListComponent
+    UsuariosListComponent,
+    AnimeDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

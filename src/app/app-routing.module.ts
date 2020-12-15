@@ -5,9 +5,11 @@ import { BibliotecasListComponent } from './bibliotecas-list/bibliotecas-list.co
 import { MangasListComponent } from './mangas-list/mangas-list.component';
 import { NovelasListComponent } from './novelas-list/novelas-list.component';
 import { UsuariosListComponent } from './usuarios-list/usuarios-list.component';
+import { AnimeDetailComponent } from './anime-detail/anime-detail.component';
 
 const routes: Routes = [
   { path: 'animes', component: AnimesListComponent },
+  {path: 'animes/:id', component: AnimeDetailComponent},
   { path: 'bibliotecas', component: BibliotecasListComponent},
   { path: 'mangas', component: MangasListComponent},
   { path: 'novelas', component: NovelasListComponent},

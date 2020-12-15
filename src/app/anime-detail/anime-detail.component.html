@@ -1,0 +1,21 @@
+<div class="container">
+    <form [formGroup]="proyectoForm">
+        <div class="form-group">
+            <label for="nombre">Nombre del Anime</label>
+            <input type="text" id="nombre" class="form-control" name="nombre">
+        </div>
+        <div class="form-group">
+            <label for="ep">Episodios</label>
+            <input type="text" id="ep" class="form-control" name="ep">
+        </div>
+        <div class="form-group">
+            <label for="tipo">Tipo</label>
+            <input type="text" id="tipo" class="form-control" name="tipo">
+        </div>
+        <div class="form-group">
+            <label for="descrp">Descripcion</label>
+            <textarea name="descrp" id="descrp" class="form-control"></textarea>
+        </div>
+        <button class="btn btn-primary">Crear proyecto</button>
+    </form>
+</div>
