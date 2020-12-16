@@ -2,20 +2,20 @@
     <form [formGroup]="animeForm">
         <div class="form-group">
             <label for="nombre">Nombre del Anime</label>
-            <input type="text" id="nombre" class="form-control" name="nombre">
+            <input type="text" id="nombre" class="form-control" name="nombre" formControlName="nombre">
         </div>
         <div class="form-group">
             <label for="ep">Episodios</label>
-            <input type="text" id="ep" class="form-control" name="ep">
+            <input type="text" id="ep" class="form-control" name="ep" formControlName="ep">
         </div>
         <div class="form-group">
             <label for="tipo">Tipo</label>
-            <input type="text" id="tipo" class="form-control" name="tipo">
+            <input type="text" id="tipo" class="form-control" name="tipo" formControlName="tipo">
         </div>
         <div class="form-group">
             <label for="descrp">Descripcion</label>
-            <textarea name="descrp" id="descrp" class="form-control"></textarea>
+            <textarea name="descrp" id="descrp" class="form-control" formControlName="descrp"></textarea>
         </div>
-        <button class="btn btn-primary">Crear Anime</button>
+        <button class="btn btn-primary" (click)="crear()">Crear Anime</button>
     </form>
 </div>

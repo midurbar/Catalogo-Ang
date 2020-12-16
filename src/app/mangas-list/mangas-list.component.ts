@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-mangas-list',
@@ -13,7 +14,7 @@ export class MangasListComponent implements OnInit {
   constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get<any[]>("http://localhost:3000/api/mangas")
+    this.http.get<any[]>(environment.apiBaseUrl + "mangas")
     .subscribe(mangas => {
       this.mangas = mangas;
     })
