@@ -18,6 +18,7 @@ export class AnimeDetailComponent implements OnInit {
     descrp: null
   })
 
+  id= undefined;
   constructor(private fb: FormBuilder, private http: HttpClient, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -26,7 +27,8 @@ export class AnimeDetailComponent implements OnInit {
         this.http.get<any>(environment.apiBaseUrl + "animes/" + params.id)
         .subscribe(
           anime => {
-            this.animeForm.patchValue(anime)
+            this.animeForm.patchValue(anime);
+            this.id = anime.id;
           },
           error => {
             alert("Error cargando el anime")
@@ -45,6 +47,20 @@ export class AnimeDetailComponent implements OnInit {
         error => {
           alert("Error creando el anime: " + error.message)
         })
+  }
+
+  modificar() {
+    this.http.put<any>(
+      environment.apiBaseUrl + "animes/" + this.id,
+      this.animeForm.value)
+    .subscribe(
+      anime => {
+        alert("Anime actualizado");
+      },
+      error => {
+        alert("Error actualizando el anime" + error.message);
+      }
+    )
   }
 
 }
