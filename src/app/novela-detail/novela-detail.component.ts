@@ -18,6 +18,7 @@ export class NovelaDetailComponent implements OnInit {
     descrp: null
   })
 
+  id= undefined;
   constructor(private fb: FormBuilder, private http: HttpClient, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -26,7 +27,8 @@ export class NovelaDetailComponent implements OnInit {
         this.http.get<any>(environment.apiBaseUrl + "novelas/" + params.id)
         .subscribe(
           novela => {
-            this.novelaForm.patchValue(novela)
+            this.novelaForm.patchValue(novela);
+            this.id = novela.id;
           },
           error => {
             alert("Error cargando la novela")
@@ -45,6 +47,20 @@ export class NovelaDetailComponent implements OnInit {
         error => {
           alert("Error creando la novela: " + error.message)
         })
+  }
+
+  modificar() {
+    this.http.put<any>(
+      environment.apiBaseUrl + "novelas/" + this.id,
+      this.novelaForm.value)
+    .subscribe(
+      novela => {
+        alert("Novela actualizada");
+      },
+      error => {
+        alert("Error actualizando la novela" + error.message);
+      }
+    )
   }
 
 }
