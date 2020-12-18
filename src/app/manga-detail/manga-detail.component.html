@@ -16,6 +16,7 @@
             <label for="descrp">Descripcion</label>
             <textarea name="descrp" id="descrp" class="form-control" formControlName="descrp"></textarea>
         </div>
-        <button class="btn btn-primary" (click)="crear()">Crear Manga</button>
+        <button *ngIf="!id" class="btn btn-primary" (click)="crear()">Crear Manga</button>
+        <button *ngIf="id" class="btn btn-primary" (click)="modificar()">Modificar Manga</button>
     </form>
 </div>

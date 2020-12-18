@@ -18,6 +18,7 @@ export class MangaDetailComponent implements OnInit {
     descrp: null
   })
 
+  id= undefined;
   constructor(private fb: FormBuilder, private http: HttpClient, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -26,7 +27,8 @@ export class MangaDetailComponent implements OnInit {
         this.http.get<any>(environment.apiBaseUrl + "mangas/" + params.id)
         .subscribe(
           manga => {
-            this.mangaForm.patchValue(manga)
+            this.mangaForm.patchValue(manga);
+            this.id = manga.id;
           },
           error => {
             alert("Error cargando el manga")
@@ -45,6 +47,20 @@ export class MangaDetailComponent implements OnInit {
         error => {
           alert("Error creando el manga: " + error.message)
         })
+  }
+
+  modificar() {
+    this.http.put<any>(
+      environment.apiBaseUrl + "mangas/" + this.id,
+      this.mangaForm.value)
+    .subscribe(
+      manga => {
+        alert("Manga actualizado");
+      },
+      error => {
+        alert("Error actualizando el manga" + error.message);
+      }
+    )
   }
 
 }
