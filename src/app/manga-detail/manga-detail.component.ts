@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-manga-detail',
@@ -15,9 +18,33 @@ export class MangaDetailComponent implements OnInit {
     descrp: null
   })
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private http: HttpClient, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      if (params.id !== '_nuevo') {
+        this.http.get<any>(environment.apiBaseUrl + "mangas/" + params.id)
+        .subscribe(
+          manga => {
+            this.mangaForm.patchValue(manga)
+          },
+          error => {
+            alert("Error cargando el manga")
+          }
+        )
+      }
+    })
+  }
+
+  crear() {
+    this.http.post(environment.apiBaseUrl + "mangas", this.mangaForm.value)
+      .subscribe(
+        manga => {
+          alert("Manga creado con éxito")
+        },
+        error => {
+          alert("Error creando el manga: " + error.message)
+        })
   }
 
 }

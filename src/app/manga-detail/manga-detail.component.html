@@ -2,20 +2,20 @@
     <form [formGroup]="mangaForm">
         <div class="form-group">
             <label for="nombre">Nombre del Manga</label>
-            <input type="text" id="nombre" class="form-control" name="nombre">
+            <input type="text" id="nombre" class="form-control" name="nombre" formControlName="nombre">
         </div>
         <div class="form-group">
             <label for="vol">Volumenes</label>
-            <input type="text" id="ep" class="form-control" name="vol">
+            <input type="text" id="ep" class="form-control" name="vol" formControlName="vol">
         </div>
         <div class="form-group">
             <label for="tipo">Tipo</label>
-            <input type="text" id="tipo" class="form-control" name="tipo">
+            <input type="text" id="tipo" class="form-control" name="tipo" formControlName="tipo">
         </div>
         <div class="form-group">
             <label for="descrp">Descripcion</label>
-            <textarea name="descrp" id="descrp" class="form-control"></textarea>
+            <textarea name="descrp" id="descrp" class="form-control" formControlName="descrp"></textarea>
         </div>
-        <button class="btn btn-primary">Crear Manga</button>
+        <button class="btn btn-primary" (click)="crear()">Crear Manga</button>
     </form>
 </div>

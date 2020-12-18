@@ -15,7 +15,7 @@
         <tbody>
             <tr *ngFor="let manga of mangas">
                 <td>{{manga.Id}}</td>
-                <td>{{manga.Nombre}}</td>
+                <td><a [routerLink]="manga.Id">{{manga.Nombre}}</a></td>
                 <td>{{manga.Vol}}</td>
                 <td>{{manga.Tipo}}</td>
                 <td>{{manga.createdAt|date:'dd-MM-yyyy'}}</td>
