@@ -18,5 +18,6 @@
         </div>
         <button *ngIf="!id" class="btn btn-primary" (click)="crear()">Crear Novela</button>
         <button *ngIf="id" class="btn btn-primary" (click)="modificar()">Modificar Novela</button>
+        <button *ngIf="id" class="btn btn-outline-danger" (click)="eliminar()">Eliminar Novela</button>
     </form>
 </div>
