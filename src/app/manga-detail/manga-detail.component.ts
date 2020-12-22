@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-manga-detail',
@@ -19,7 +19,7 @@ export class MangaDetailComponent implements OnInit {
   })
 
   id= undefined;
-  constructor(private fb: FormBuilder, private http: HttpClient, private route:ActivatedRoute) { }
+  constructor(private fb: FormBuilder, private http: HttpClient, private route:ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -42,7 +42,8 @@ export class MangaDetailComponent implements OnInit {
     this.http.post(environment.apiBaseUrl + "mangas", this.mangaForm.value)
       .subscribe(
         manga => {
-          alert("Manga creado con éxito")
+          alert("Manga creado con éxito");
+          this.router.navigate(["mangas"]);
         },
         error => {
           alert("Error creando el manga: " + error.message)
@@ -56,11 +57,14 @@ export class MangaDetailComponent implements OnInit {
     .subscribe(
       manga => {
         alert("Manga actualizado");
+        this.router.navigate(["mangas"]);
       },
       error => {
         alert("Error actualizando el manga" + error.message);
       }
     )
   }
+
+
 
 }
