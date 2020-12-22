@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-anime-detail',
@@ -19,7 +19,7 @@ export class AnimeDetailComponent implements OnInit {
   })
 
   id= undefined;
-  constructor(private fb: FormBuilder, private http: HttpClient, private route:ActivatedRoute) { }
+  constructor(private fb: FormBuilder, private http: HttpClient, private route:ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -43,6 +43,7 @@ export class AnimeDetailComponent implements OnInit {
       .subscribe(
         anime => {
           alert("Anime creado con éxito")
+          this.router.navigate(["animes"]);
         },
         error => {
           alert("Error creando el anime: " + error.message)
@@ -56,11 +57,29 @@ export class AnimeDetailComponent implements OnInit {
     .subscribe(
       anime => {
         alert("Anime actualizado");
+        this.router.navigate(["animes"]);
       },
       error => {
         alert("Error actualizando el anime" + error.message);
       }
     )
+  }
+
+  eliminar() {
+    if (confirm("¿Esta seguro?")) {
+      this.http.delete<any>(
+        environment.apiBaseUrl + "animes/" + this.id,
+        this.animeForm.value)
+      .subscribe(
+        () => {
+          alert("Anime eliminado con exito");
+          this.router.navigate(["animes"]);
+        },
+        error => {
+          alert("Error eliminando el anime" + error.message);
+        }
+      )
+    }
   }
 
 }
