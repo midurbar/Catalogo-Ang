@@ -14,7 +14,7 @@
         <tbody>
             <tr *ngFor="let usuario of usuarios">
                 <td>{{usuarios.id}}</td>
-                <td>{{usuarios.nombre}}</td>
+                <td><a [routerLink]="usuario.id">{{usuario.nombre}}</a></td>
                 <td>{{usuarios.password}}</td>
                 <td>{{usuarios.Id_Bib}}</td>
                 <td>{{usuarios.Admin}}</td>
@@ -23,4 +23,6 @@
             </tr>
         </tbody>
     </table>
+
+    <a routerLink="_nuevo" class="btn btn-primary">Añadir Usuario</a>
 </div>

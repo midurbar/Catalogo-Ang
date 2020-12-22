@@ -8,6 +8,7 @@ import { UsuariosListComponent } from './usuarios-list/usuarios-list.component';
 import { AnimeDetailComponent } from './anime-detail/anime-detail.component';
 import { MangaDetailComponent } from './manga-detail/manga-detail.component';
 import { NovelaDetailComponent } from './novela-detail/novela-detail.component';
+import { UsuarioDetailComponent } from './usuario-detail/usuario-detail.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'mangas/:id', component: MangaDetailComponent},
   { path: 'novelas', component: NovelasListComponent},
   { path: 'novelas/:id', component: NovelaDetailComponent},
-  { path: 'usuarios', component: UsuariosListComponent}
+  { path: 'usuarios', component: UsuariosListComponent},
+  { path: 'usuarios/:id', component: UsuarioDetailComponent}
 ];
 
 @NgModule({

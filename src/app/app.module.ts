@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AnimeDetailComponent } from './anime-detail/anime-detail.component';
 import { MangaDetailComponent } from './manga-detail/manga-detail.component';
 import { NovelaDetailComponent } from './novela-detail/novela-detail.component';
+import { UsuarioDetailComponent } from './usuario-detail/usuario-detail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -24,7 +25,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UsuariosListComponent,
     AnimeDetailComponent,
     MangaDetailComponent,
-    NovelaDetailComponent
+    NovelaDetailComponent,
+    UsuarioDetailComponent
   ],
   imports: [
     BrowserModule,
