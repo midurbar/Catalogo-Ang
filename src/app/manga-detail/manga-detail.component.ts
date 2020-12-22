@@ -65,6 +65,21 @@ export class MangaDetailComponent implements OnInit {
     )
   }
 
-
+  eliminar() {
+    if (confirm("¿Esta seguro?")) {
+      this.http.delete<any>(
+        environment.apiBaseUrl + "mangas/" + this.id,
+        this.mangaForm.value)
+      .subscribe(
+        () => {
+          alert("Manga eliminado con exito");
+          this.router.navigate(["mangas"]);
+        },
+        error => {
+          alert("Error eliminando el manga" + error.message);
+        }
+      )
+    }
+  }
 
 }
