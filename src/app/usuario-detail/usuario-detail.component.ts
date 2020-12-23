@@ -14,7 +14,8 @@ export class UsuarioDetailComponent implements OnInit {
   usuarioForm = this.fb.group({
     nombre: [null, Validators.required],
     email: null,
-    password: null
+    password: null,
+    repassword: null
   })
 
   id= undefined;
@@ -39,30 +40,38 @@ export class UsuarioDetailComponent implements OnInit {
   }
 
   crear() {
-    this.http.post(environment.apiBaseUrl + "usuarios", this.usuarioForm.value)
-      .subscribe(
-        usuario => {
-          alert("Usuario creado con éxito")
-          this.router.navigate(["usuarios"]);
-        },
-        error => {
-          alert("Error creando el usuario: " + error.message)
+    if (this.usuarioForm.value.password == this.usuarioForm.value.repassword) {
+      this.http.post(environment.apiBaseUrl + "usuarios", this.usuarioForm.value)
+        .subscribe(
+          usuario => {
+            alert("Usuario creado con éxito")
+            this.router.navigate(["usuarios"]);
+          },
+          error => {
+            alert("Error creando el usuario: " + error.message)
         })
+    } else {
+      alert("Los campos contraseña no coinciden");
+    }
   }
 
   modificar() {
-    this.http.put<any>(
-      environment.apiBaseUrl + "usuarios/" + this.id,
-      this.usuarioForm.value)
-    .subscribe(
-      tarea => {
-        alert("Usuario actualizado");
-        this.router.navigate(["usuarios"]);
-      },
-      error => {
-        alert("Error actualizando el usuario" + error.message);
-      }
-    )
+    if (this.usuarioForm.value.password == this.usuarioForm.value.repassword) {
+      this.http.put<any>(
+        environment.apiBaseUrl + "usuarios/" + this.id,
+        this.usuarioForm.value)
+      .subscribe(
+        usuario => {
+          alert("Usuario actualizado");
+          this.router.navigate(["usuarios"]);
+        },
+        error => {
+          alert("Error actualizando el usuario" + error.message);
+        }
+      )
+    } else {
+      alert("Los campos contraseña no coinciden");
+    }
   }
 
   eliminar() {
