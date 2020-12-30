@@ -39,7 +39,7 @@ export class AnimeDetailComponent implements OnInit {
   }
 
   crear() {
-    this.http.post(environment.apiBaseUrl + "animes", this.animeForm.value)
+    this.http.post(environment.apiBaseUrl + "animes/", this.animeForm.value)
       .subscribe(
         anime => {
           alert("Anime creado con éxito");
